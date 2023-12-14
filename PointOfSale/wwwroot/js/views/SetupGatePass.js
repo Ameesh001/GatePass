@@ -32,7 +32,7 @@ $(document).ready(function () {
 
                 responseJson.data.forEach((item) => {
                     $("#cboBank").append(
-                       // $("<option>").val(item.idBank).text(item.description)
+                        // $("<option>").val(item.idBank).text(item.description)
                         //$("<option>").val("Bank not defined").text("Select Bank")
                         $("<option>").val(item.idCategory).text(item.description)
                     )
@@ -73,7 +73,7 @@ $(document).ready(function () {
         },
         "columns": [
             { "data": "registrationDate" },
-            {  "data": "idProduct"  },
+            { "data": "idProduct" },
             { "data": "cusCode" },
             { "data": "invoiceName" },
             { "data": "shortName" },
@@ -92,7 +92,7 @@ $(document).ready(function () {
                 }
             },
 
-          
+
             {
                 "defaultContent": '<button class="btn btn-primary btn-edit btn-sm mr-2"><i class="mdi mdi-pencil"></i></button>' +
                     '<button class="btn btn-danger btn-delete btn-sm"><i class="mdi mdi-trash-can"></i></button>',
@@ -109,8 +109,8 @@ $(document).ready(function () {
                 }
             },
             { "data": "mobile" },
-            
-            
+
+
             { "data": "address" }
         ],
         order: [[0, "desc"]],
@@ -129,7 +129,27 @@ $(document).ready(function () {
     });
 })
 
+var countSno = 0;
 const openModal = (model = BASIC_MODEL) => {
+    $("#childTable tr").remove();
+    countSno = 0;
+    $('#childTable').find('thead').append('<tr><th scope="col">No.</th><th scope="col">Name</th><th scope="col">Description</th><th scope="col">Quantity</th><th scope="col">Remarks</th><th scope=""></th></tr>');
+
+
+    if (model.debit === null || model.debit === '') {
+        childrenRow();
+    }
+    else {
+        var noOfRows = model.debit.split("|");
+        for (let i = 1; i < noOfRows.length; i++) {
+            var value = noOfRows[i-1].replace("|", "");
+            var array = value.split(";");
+            countSno++;
+            $('#childTable').find('tbody').append('<tr><th scope="row">' + countSno + '</th><td class="col-sm-4"><input type="text" name="name" class="form-control" value=' + array[1] + ' /></td><td><input type="text" name="school" class="form-control" value=' + array[2] + ' /></td><td class="col-sm-2"><input type="text" name="year" class="form-control" value=' + array[3] + ' /></td><td class="col-sm-2"><input type="text" name="age"  class="form-control" value=' + array[4] + ' /></td><td><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
+
+        }
+    }
+
 
     $("#txtId").val(model.idProduct);
     $("#txtCusCode").val(model.cusCode);
@@ -159,6 +179,7 @@ $("#btnSave").on("click", function () {
     let targetTable = document.getElementById('childTable');
     let targetTableRows = targetTable.rows;
     let tableHeaders = targetTableRows[0];
+    let valWithName = '';
     let val = '';
 
     // start from the second row as the first one only contains the table's headers
@@ -179,17 +200,21 @@ $("#btnSave").on("click", function () {
                 //currDataInput ? console.log(`${currColumn}: ${currDataInput.value}`)
                 //    : console.log(`${currColumn}: ${currData.innerHTML}`);
 
-                val += currDataInput ? currColumn +":"+ currDataInput.value + ";" 
+                valWithName += currDataInput ? currColumn + ":" + currDataInput.value + ";"
                     : currColumn + ":" + currData.innerHTML + ";";
+
+                val += currDataInput ? currDataInput.value + ";"
+                    : currData.innerHTML + ";";
             }
             //console.log(`${currColumn}: ${currDataInput.value}`);
         }
+        valWithName += "|";
         val += "|";
     }
     ///////////////////////////
 
     console.log(val);
-  
+
     const inputs = $("input.input-validate").serializeArray();
     const inputs_without_value = inputs.filter((item) => item.value.trim() == "")
 
@@ -208,8 +233,10 @@ $("#btnSave").on("click", function () {
     model["idBank"] = $("#cboBank").val();
     model["phoneNo"] = $("#txtPhoneNo").val();
     model["mobile"] = $("#txtMobile").val();
-   // model["openingBalance"] = $("#txtOpenBalance").val();
-    model["debit"] = $("#txtDebit").val();
+    // model["openingBalance"] = $("#txtOpenBalance").val();
+    model["openingBalance"] = valWithName;
+    model["debit"] = val;
+    // model["debit"] = $("#txtDebit").val();
     model["address"] = $("#txtAddress").val();
     model["isActive"] = $("#cboState").val();
     const inputPhoto = document.getElementById('txtPhoto');
@@ -286,18 +313,6 @@ $("#tbData tbody").on("click", ".btn-edit", function () {
 $("#tbData tbody").on("click", ".btn-delete", function () {
 
 
-    var ProtectedIsfound = false // default value. 
-    //JavaScript method:
-    //loop through the tr and td, then based on the IsProtected value to change the ProtectedIsFound value.
-    var trlist = document.getElementById("tbData").getElementsByTagName("tr");
-    for (var i = 1; i < trlist.length; i++) {
-
-        console.log(trlist[i].getElementsByTagName("td")[2].innerText);
-
-    }
-   // console.log('123');
-
-
     let row;
 
     if ($(this).closest('tr').hasClass('child')) {
@@ -347,9 +362,12 @@ $("#tbData tbody").on("click", ".btn-delete", function () {
 })
 
 
-var i = 1;
-$("#addrow").on("click", function () {
-    i++;
-    $('#childTable').find('tbody').append('<tr><th scope="row">' + i + '</th><td class="col-sm-4"><input type="text" name="name" class="form-control" /></td><td><input type="text" name="school" class="form-control" /></td><td class="col-sm-2"><input type="text" name="year" class="form-control" /></td><td class="col-sm-2"><input type="text" name="age" class="form-control" /></td><td><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
+//$("#addrow").on("click", function () {
+//    childrenRow();
+//})
 
-})
+function childrenRow() {
+    countSno++;
+    $('#childTable').find('tbody').append('<tr><th scope="row">' + countSno + '</th><td class="col-sm-4"><input type="text" name="name" class="form-control" /></td><td><input type="text" name="school" class="form-control" /></td><td class="col-sm-2"><input type="text" name="year" class="form-control" /></td><td class="col-sm-2"><input type="text" name="age" class="form-control" /></td><td><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
+
+}

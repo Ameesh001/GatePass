@@ -24,7 +24,7 @@ namespace PointOfSale.Controllers
 			_mapper = mapper;
 		}
 
-		public IActionResult Customers()
+		public IActionResult GatePass()
 		{
 			return View();
 		}

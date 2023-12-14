@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "76BQmBe5LxR/ssa961Iy/1jqf7+4oakLYOvT2H3QKX7nvQNK3J0oEIQisIm5zYog644XnYnGZuSjhTtg5RiyDw==",
+  "dgSpecHash": "GKnwQQgX1Yk08LiLpSUuN7xmiaGjqIE9EXpYrJQnsl5ktVCsN2RH0G7udgyaGAGcVqDRaRroULtlJ4e/hn0piw==",
   "success": true,
-  "projectFilePath": "D:\\Umais\\MyWorking\\MES\\PointOfSale.Data\\PointOfSale.Data.csproj",
+  "projectFilePath": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale.Data\\PointOfSale.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kk\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\kk\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

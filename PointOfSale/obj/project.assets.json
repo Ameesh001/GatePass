@@ -12348,11 +12348,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Umais\\MyWorking\\MES\\PointOfSale\\PointOfSale.csproj",
+      "projectUniqueName": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\PointOfSale.csproj",
       "projectName": "PointOfSale",
-      "projectPath": "D:\\Umais\\MyWorking\\MES\\PointOfSale\\PointOfSale.csproj",
+      "projectPath": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\PointOfSale.csproj",
       "packagesPath": "C:\\Users\\kk\\.nuget\\packages\\",
-      "outputPath": "D:\\Umais\\MyWorking\\MES\\PointOfSale\\obj\\",
+      "outputPath": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -12373,11 +12373,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Umais\\MyWorking\\MES\\PointOfSale.Business\\PointOfSale.Business.csproj": {
-              "projectPath": "D:\\Umais\\MyWorking\\MES\\PointOfSale.Business\\PointOfSale.Business.csproj"
+            "D:\\Umais\\MyWorking\\GatePass\\PointOfSale.Business\\PointOfSale.Business.csproj": {
+              "projectPath": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale.Business\\PointOfSale.Business.csproj"
             },
-            "D:\\Umais\\MyWorking\\MES\\PointOfSale.Model\\PointOfSale.Model.csproj": {
-              "projectPath": "D:\\Umais\\MyWorking\\MES\\PointOfSale.Model\\PointOfSale.Model.csproj"
+            "D:\\Umais\\MyWorking\\GatePass\\PointOfSale.Model\\PointOfSale.Model.csproj": {
+              "projectPath": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale.Model\\PointOfSale.Model.csproj"
             }
           }
         }

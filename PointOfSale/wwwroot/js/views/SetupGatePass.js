@@ -19,6 +19,11 @@ const BASIC_MODEL = {
 
 $(document).ready(function () {
 
+    //var i = 1;
+    //function childrenRow() {
+    //    i++;
+    //    $('#childTable').find('tbody').append('<tr><th scope="row">' + i + '</th><td class="col-sm-4"><input type="text" name="name" class="form-control" /></td><td><input type="text" name="school" class="form-control" /></td><td class="col-sm-2"><input type="text" name="year" class="form-control" /></td><td class="col-sm-2"><input type="text" name="age" class="form-control" /></td><td><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
+    //}
     fetch("/Setup/GetBanks")
         .then(response => {
             return response.ok ? response.json() : Promise.reject(response);
@@ -125,6 +130,7 @@ $(document).ready(function () {
 })
 
 const openModal = (model = BASIC_MODEL) => {
+
     $("#txtId").val(model.idProduct);
     $("#txtCusCode").val(model.cusCode);
     $("#txtInvoice").val(model.invoiceName);
@@ -148,6 +154,42 @@ $("#btnNewProduct").on("click", function () {
 })
 
 $("#btnSave").on("click", function () {
+
+    ///////////////////////////
+    let targetTable = document.getElementById('childTable');
+    let targetTableRows = targetTable.rows;
+    let tableHeaders = targetTableRows[0];
+    let val = '';
+
+    // start from the second row as the first one only contains the table's headers
+    for (let i = 1; i < targetTableRows.length; i++) {
+        // loop over the contents of each row
+        for (let j = 0; j < targetTableRows[i].cells.length; j++) {
+            // something we could use to identify a given item
+            let currColumn = tableHeaders.cells[j].innerHTML;
+            // the current <td> element
+            let currData = targetTableRows[i].cells[j];
+            // the input field in the row
+            let currDataInput = currData.querySelector('input');
+
+            // is the current <td> element containing an input field? print its value.
+            // Otherwise, print whatever is insside
+            if (!currData.innerHTML.includes("+")) {
+
+                //currDataInput ? console.log(`${currColumn}: ${currDataInput.value}`)
+                //    : console.log(`${currColumn}: ${currData.innerHTML}`);
+
+                val += currDataInput ? currColumn +":"+ currDataInput.value + ";" 
+                    : currColumn + ":" + currData.innerHTML + ";";
+            }
+            //console.log(`${currColumn}: ${currDataInput.value}`);
+        }
+        val += "|";
+    }
+    ///////////////////////////
+
+    console.log(val);
+  
     const inputs = $("input.input-validate").serializeArray();
     const inputs_without_value = inputs.filter((item) => item.value.trim() == "")
 
@@ -166,14 +208,14 @@ $("#btnSave").on("click", function () {
     model["idBank"] = $("#cboBank").val();
     model["phoneNo"] = $("#txtPhoneNo").val();
     model["mobile"] = $("#txtMobile").val();
-    model["openingBalance"] = $("#txtOpenBalance").val();
+   // model["openingBalance"] = $("#txtOpenBalance").val();
     model["debit"] = $("#txtDebit").val();
     model["address"] = $("#txtAddress").val();
     model["isActive"] = $("#cboState").val();
     const inputPhoto = document.getElementById('txtPhoto');
 
     const formData = new FormData();
-    formData.append('photo', inputPhoto.files[0]);
+    //formData.append('photo', inputPhoto.files[0]);
     formData.append('model', JSON.stringify(model));
 
     $("#modalData").find("div.modal-content").LoadingOverlay("show")
@@ -302,4 +344,12 @@ $("#tbData tbody").on("click", ".btn-delete", function () {
                     })
             }
         });
+})
+
+
+var i = 1;
+$("#addrow").on("click", function () {
+    i++;
+    $('#childTable').find('tbody').append('<tr><th scope="row">' + i + '</th><td class="col-sm-4"><input type="text" name="name" class="form-control" /></td><td><input type="text" name="school" class="form-control" /></td><td class="col-sm-2"><input type="text" name="year" class="form-control" /></td><td class="col-sm-2"><input type="text" name="age" class="form-control" /></td><td><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
+
 })

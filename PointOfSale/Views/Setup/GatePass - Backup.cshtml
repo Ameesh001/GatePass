@@ -1,5 +1,5 @@
 ﻿@{
-	ViewData["Title"] = "Customers";
+	ViewData["Title"] = "GatePass";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -20,10 +20,10 @@
 			<div class="card-header card-header-border-bottom">
 				<div class="row justify-content-between w-100">
 					<div class="col-sm-4">
-						<h4>Customers</h4>
+						<h4>Gate Passes</h4>
 					</div>
 					<div class="col-sm-4 text-right">
-						<button class="btn btn-success" id="btnNewProduct">New Customer</button>
+						<button class="btn btn-success" id="btnNewProduct">New Gate Pass</button>
 					</div>
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 							<thead>
 								<tr>
 									<th>ProcessDate</th>
-									<th>CustomerID</th>
+									<th>RecordID</th>
 									<th>Customer</th>
 									<th>InvoiceName</th>
 									<th>ShortName</th>
@@ -65,7 +65,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalGridTitle">Customer detail</h5>
+				<h5 class="modal-title" id="exampleModalGridTitle">Gate Pass detail</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -77,23 +77,23 @@
 						<div class="col-sm-8">
 							<div class="form-row">
 								<div class="form-group col-sm-6">
-									<label for="txCusCode">Customer</label>
+									<label for="txCusCode">Name</label>
 									<input type="text" class="form-control form-control-sm input-validate" id="txtCusCode" name="CusCode">
 								</div>
 								<div class="form-group col-sm-6">
-									<label for="txtInvoice">Invoice Name</label>
+									<label for="txtInvoice">Company Name</label>
 									<input type="text" class="form-control form-control-sm input-validate" id="txtInvoice" name="InvoiceName">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-sm-6">
-									<label for="txtShortName">Short Name</label>
+									<label for="txtShortName">Vehicle Type</label>
 									<input type="text" class="form-control form-control-sm input-validate" id="txtShortName" name="ShortName">
 								</div>
+								
 								<div class="form-group col-sm-6">
-									<label for="cboBank">Bank</label>
-									<select class="form-control form-control-sm" id="cboBank">
-									</select>
+									<label for="txtPhoneNo">Vehicle Number</label>
+									<input type="text" class="form-control form-control-sm input-validate" id="txtPhoneNo" name="PhoneNo">
 								</div>
 							</div>
 							<div class="form-row">
@@ -102,11 +102,14 @@
 									<input type="text" class="form-control form-control-sm input-validate" id="txtMobile" name="Mobile">
 								</div>
 								<div class="form-group col-sm-6">
-									<label for="txtPhoneNo">Phone No.</label>
-									<input type="text" class="form-control form-control-sm input-validate" id="txtPhoneNo" name="PhoneNo">
+									<label for="cboBank">State</label>
+									<select class="form-control form-control-sm" id="cboState">
+										<option value="1">Returnable</option>
+										<option value="0">Non-Returnable</option>
+									</select>
 								</div>
 							</div>
-							<div class="form-row">
+							@* <div class="form-row">
 								
 								<div class="form-group col-sm-6">
 									<label for="txtOpenBalance">Opening Balance</label>
@@ -117,26 +120,26 @@
 									<input type="text" class="form-control form-control-sm input-validate" id="txtDebit" name="Debit">
 								</div>
 
-							</div>
+							</div> *@
 							<div class="form-row">
 								
 
 								<div class="form-group col-sm-12">
-									<label for="txtAddress">Address</label>
+									<label for="txtAddress">Remarks</label>
 									<input type="text" class="form-control form-control-sm input-validate" id="txtAddress" name="Address">
 								</div>
 
 							</div>
-							<div class="form-row">
+							@* <div class="form-row">
 								<div class="form-group col-sm-6">
 									<label for="cboState">State</label>
 									<select class="form-control form-control-sm" id="cboState">
-										<option value="1">Active</option>
-										<option value="0">Inactive</option>
+										<option value="1">Returnable</option>
+										<option value="0">Non-Returnable</option>
 									</select>
 								</div>
-							</div>
-							<div class="form-row">
+							</div> *@
+						@* 	<div class="form-row">
 								<div class="form-group col-sm-6">
 									<label for="txtPhoto">Photo</label>
 									<input class="form-control-file" type="file" id="txtPhoto" />
@@ -145,7 +148,7 @@
 						</div>
 						<div class="col-sm-4">
 							<img id="imgProduct" style="max-width:200px;" src="" class="rounded mx-auto d-block" alt="Photo Customer">
-						</div>
+						</div> *@
 					</div>
 
 				</form>
@@ -173,5 +176,5 @@
 	<script src="~/plugins/data-tables/buttons.html5.min.js"></script>
 	<script src="~/plugins/data-tables/buttons.print.min.js"></script>
 
-	<script src="~/js/views/SetupCustomers.js"></script>
+	<script src="~/js/views/SetupGatePass.js"></script>
 }

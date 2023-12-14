@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U45Q3ikvRL6t1KQLV6nN+N/rd/vxvdDwex1I4SCEy4J04xhxtg3QkzEamxpIgvQfu4Pm8aoToIMszVdbm5IKGQ==",
+  "dgSpecHash": "7QV+z/BhismCEyZcT83Fi2j43hNMtqTBUBtRQMCGkD/GgJZlzIGo/7dMERX1EjJ1/FIQ9eau6M7dMXP8jru8vQ==",
   "success": true,
-  "projectFilePath": "D:\\Umais\\MyWorking\\MES\\PointOfSale.Model\\PointOfSale.Model.csproj",
+  "projectFilePath": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale.Model\\PointOfSale.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kk\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kk\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

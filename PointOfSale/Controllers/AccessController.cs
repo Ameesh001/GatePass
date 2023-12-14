@@ -23,7 +23,7 @@ namespace PointOfSale.Controllers
             ClaimsPrincipal claimuser = HttpContext.User;
             if (claimuser.Identity.IsAuthenticated)
 
-				return RedirectToAction("Stock", "Inventory");
+				return RedirectToAction("GatePass", "Setup");
 			return View();
         }
 
@@ -58,7 +58,7 @@ namespace PointOfSale.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), properties);
 
            // return RedirectToAction("DashBoard", "Admin");
-            return RedirectToAction("Customers", "Setup");
+            return RedirectToAction("GatePass", "Setup");
 
 
         }

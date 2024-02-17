@@ -100,12 +100,24 @@ $(document).ready(function () {
     });
 })
 
+function OptionSelection(optValue,arrayValue) {
+
+    if (optValue == arrayValue) {
+
+        return 'selected';
+    }
+
+    return '';
+}
+
+
 var countSno = 0;
 const openModal = (model = BASIC_MODEL) => {
 
     $("#childTable tr").remove();
     countSno = 0;
-    $('#childTable').find('thead').append('<tr><th scope="col" style="width:4%;">No.</th>    <th scope="col" style="width:15%;">Name</th>   <th scope="col" style="width:22%;">Description</th>    <th scope="col" style="width:22%;">Remarks</th>       <th scope="col" style="width:10%;"><select class="form-control form-control-sm" id="Q_P"><option value="Quantity">Quantity</option><option value="Pieces">Pieces</option></select></th>      <th scope="col" style="width:10%;"><select class="form-control form-control-sm" id="K_L"><option value="KG">KG</option><option value="LBS">LBS</option></select></th>    <th scope="col" style="width:10%;"><select class="form-control form-control-sm" id="C_C_B"><option value="Cone">Cone</option><option value="Carton">Carton</option><option value="Bags">Bags</option></select></th>    <th scope="" style="width:5%;"></th>    </tr>');
+    $('#childTable').find('thead').append('<tr><th scope="col" style="width:4%;">No.</th>    <th scope="col" style="width:15%;">Name</th>   <th scope="col" style="width:22%;">Description</th>    <th scope="col" style="width:22%;">Remarks</th>          <th scope="col" style="width:10%;">UOM</th>       <th scope="col" style="width:10%;">Quantity</th>' +
+        '<th scope="col" style="width:10%;"><select class="form-control form-control-sm" id="C_C_B"><option value="Cone">Cone</option><option value="Carton">Carton</option><option value="Bags">Bags</option></select></th>    <th scope="" style="width:5%;"></th>    </tr > ');
 
 
 
@@ -120,10 +132,11 @@ const openModal = (model = BASIC_MODEL) => {
             var array = value.split(";");
 
             countSno++;
-            $('#childTable').find('tbody').append('<tr><th scope="row" style="width:4%;">' + countSno + '</th><td style="width:15%;"><input type="text" name="name" class="form-control" value="' + array[1] + '" /></td><td style="width:22%;"><input type="text" name="school" class="form-control" value="' + array[2] + '" /></td><td style="width:22%;"><input type="text" name="year" class="form-control" value="' + array[3] + '" /></td><td style="width:10%;"><input type="text" name="age"  class="form-control" value="' + array[4] + '" /></td><td style="width:10%;"><input type="text" name="age"  class="form-control" value="' + array[5] + '" /></td><td style="width:10%;"><input type="text" name="age"  class="form-control" value="' + array[6] + '" /></td><td style="width:5%;"><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
+            $('#childTable').find('tbody').append('<tr><th scope="row" style="width:4%;">' + countSno + '</th><td style="width:15%;"><input type="text" name="name" class="form-control" value="' + array[1] + '" /></td><td style="width:22%;"><input type="text" name="school" class="form-control" value="' + array[2] + '" /></td><td style="width:22%;"><input type="text" name="year" class="form-control" value="' + array[3] + '" /></td><td style="width:12%;">' +
+                '<select class="form-control" id="ddl_UOM"><option ' + OptionSelection('QTY', array[4]) + ' value="QTY">QTY</option><option ' + OptionSelection('KG', array[4]) + ' value="KG">KG</option><option ' + OptionSelection('PCS', array[4]) + ' value="PCS">PCS</option><option ' + OptionSelection('DZN', array[4]) + ' value="DZN">DZN</option><option ' + OptionSelection('LBS',array[4]) + ' value="LBS">LBS</option><option ' + OptionSelection('PACK',array[4]) + ' value="PACK">PACK</option></select></th ></td ><td style="width:10%;"><input type="text" name="age"  class="form-control" value="' + array[5] + '" /></td><td style="width:10%;"><input type="text" name="age"  class="form-control" value="' + array[6] + '" /></td><td style="width:5%;"><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr > ');
 
         }
-       
+
 
         //<Column Binding according to data>
         //var itemD = model.itemDetail.split("|");
@@ -141,21 +154,21 @@ const openModal = (model = BASIC_MODEL) => {
         //$("#C_C_B").val(C_C_B[0].trim());
 
         //</Column data Binding according to data>
-        var Q_P = '';
-        var K_L = '';
+        //var Q_P = '';
+        //var K_L = '';
         var C_C_B = '';
-        if (model.itemDetail.includes("Qty:")) {
-            Q_P = 'Quantity';
-        } else {
-            Q_P = 'Pieces';
-        }
+        //if (model.itemDetail.includes("Qty:")) {
+        //    Q_P = 'Quantity';
+        //} else {
+        //    Q_P = 'Pieces';
+        //}
 
-        if (model.itemDetail.includes("LBS:")) {
-            K_L = 'LBS';
-        }
-        else {
-            K_L = 'KG';
-        }
+        //if (model.itemDetail.includes("LBS:")) {
+        //    K_L = 'LBS';
+        //}
+        //else {
+        //    K_L = 'KG';
+        //}
 
         if (model.itemDetail.includes("Bags:")) {
             C_C_B = 'Bags';
@@ -167,8 +180,8 @@ const openModal = (model = BASIC_MODEL) => {
             C_C_B = 'Carton';
         }
 
-        $("#Q_P").val(Q_P);
-        $("#K_L").val(K_L);
+        //$("#Q_P").val(Q_P);
+        //$("#K_L").val(K_L);
         $("#C_C_B").val(C_C_B);
         //</Column Binding according to data>
     }
@@ -209,8 +222,8 @@ $("#btnSave").on("click", function () {
     let tableHeaders = targetTableRows[0];
     let dt = '';
     let valWithName = '';
-    let ddlQ_P = $("#Q_P").val();
-    let ddlK_L = $("#K_L").val();
+    //let ddlQ_P = $("#Q_P").val();
+    //let ddlK_L = $("#K_L").val();
     let ddlC_C_B = $("#C_C_B").val();
     let val = '';
 
@@ -225,6 +238,8 @@ $("#btnSave").on("click", function () {
             // the input field in the row
             let currDataInput = currData.querySelector('input');
 
+            let currDataSelect = currData.querySelector('SELECT');
+
             // is the current <td> element containing an input field? print its value.
             // Otherwise, print whatever is insside
             if (!currData.innerHTML.includes("+")) {
@@ -236,26 +251,40 @@ $("#btnSave").on("click", function () {
                         dt = currDataInput.value;
                     }
                 }
+                else if (currDataSelect)
+                {
+                    dt = currDataSelect.value;
+                }
                 else {
+
                     dt = currData.innerHTML;
                 }
 
                 if (j > 3) {
 
-                    if (j === 4) {
-                        currColumn = ddlQ_P;
-                    }
-                    else if (j === 5) {
+                    //if (j === 4) {
+                    //    currColumn = ddlQ_P;
+                    //}
+                    //else if (j === 5) {
 
-                        currColumn = ddlK_L;
-                    }
-                    else if (j === 6) {
+                    //    currColumn = ddlK_L;
+                    //}
+                     if (j === 6) {
 
                         currColumn = ddlC_C_B;
                     }
                 }
 
-                valWithName += currColumn + ":" + dt + "; ";
+                if (currColumn == 'UOM' || currColumn == 'Quantity') {
+
+                    valWithName += dt + "; ";
+                }
+                else {
+
+                    valWithName += currColumn + ":" + dt + "; ";
+                }
+
+                //valWithName += currColumn + ":" + dt + "; ";
                 val += dt + ";";
 
             }
@@ -462,6 +491,7 @@ function checkvalue() {
 }
 function childrenRow() {
     countSno++;
-    $('#childTable').find('tbody').append('<tr><th scope="row" style="width:4%;">' + countSno + '</th><td style="width:15%;"><input type="text" name="name" class="form-control" /></td><td style="width:22%;"><input type="text" name="description" class="form-control" /></td><td style="width:22%;"><input type="text" name="qty" class="form-control" /></td><td style="width:10%;"><input type="text" name="kg" class="form-control" /></td><td style="width:10%;"><input type="text" name="lbs" class="form-control" /></td><td style="width:10%;"><input type="text" name="pieces" class="form-control" /></td><td style="width:5%;"><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
+    $('#childTable').find('tbody').append('<tr><th scope="row" style="width:4%;">' + countSno + '</th><td style="width:15%;"><input type="text" name="name" class="form-control" /></td><td style="width:22%;"><input type="text" name="description" class="form-control" /></td><td style="width:22%;"><input type="text" name="qty" class="form-control" /></td><td style="width:15%;">' +
+        '<select class="form-control" id="ddl_UOM"><option value="QTY">QTY</option><option value="KG">KG</option><option value="PCS">PCS</option><option value="DZN">DZN</option><option value="LBS">LBS</option><option value="PACK">PACK</option></select></th></td><td style="width:10%;"><input type="text" name="lbs" class="form-control" /></td><td style="width:10%;"><input type="text" name="pieces" class="form-control" /></td><td style="width:5%;"><input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow()" value="+" /></td></tr>');
 
 }

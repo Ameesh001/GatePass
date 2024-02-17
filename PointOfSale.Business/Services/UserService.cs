@@ -117,6 +117,13 @@ namespace PointOfSale.Business.Services
 
             return user_found;
         }
+        public async Task<User> GetByemail(string email)
+        {
+
+            User user_found = await _repository.Get(u => u.Name.Equals(email));
+
+            return user_found;
+        }
 
         public async Task<User> GetById(int IdUser)
         {

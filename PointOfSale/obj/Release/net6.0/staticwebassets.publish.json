@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/ciWBvjgBh9yuebRj+vHSeTML6GYR3aO9ATs9dlyob8=",
+  "Hash": "2V3lMZu5Gm91qeetT6MX2jviWs2pAQyfk3UnNe4XApA=",
   "Source": "PointOfSale",
   "BasePath": "_content/PointOfSale",
   "Mode": "Default",
@@ -423,6 +423,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\sleek.js"
+    },
+    {
+      "Identity": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\wwwroot\\js\\views.zip",
+      "SourceId": "PointOfSale",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\wwwroot\\",
+      "BasePath": "_content/PointOfSale",
+      "RelativePath": "js/views.zip",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\views.zip"
     },
     {
       "Identity": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\wwwroot\\js\\views\\AdminDashBoard.js",

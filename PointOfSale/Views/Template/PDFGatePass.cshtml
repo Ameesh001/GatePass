@@ -109,7 +109,7 @@
 
                 </td>
                 <td style="text-align:center; padding-top:0em">
-                    <P style="font-size:27PX; font-weight:bold;">TEXTILE FORT PRIVATE LIMITED</P>
+                    <P style="font-size:27PX; font-weight:bold;">TEXTILFORT PRIVATE LIMITED</P>
                     <P style="font-size:15px">PLOT NO. 23, SECTOR 24, INDUSTRIAL AREA, SHAN CHOWRANGI, KARACHI.</P>
                     <P>@Model.Status GATE PASS (@Model.idGatePass)</P>
 
@@ -220,23 +220,9 @@
 
                     <th class="tbth" style="width:150px">Remarks</th>
                     @{
-                        if (Model.itemDetail.Contains("Qty:"))
-                        {
-                            <th class="tbth" style="width:70px">Quantity</th>
-                        }
-                        else
-                        {
-                            <th class="tbth" style="width:70px">Pieces</th>
-                        }
-
-                        if (Model.itemDetail.Contains("LBS:"))
-                        {
-                            <th class="tbth" style="width:70px">LBS</th>
-                        }
-                        else
-                        {
-                            <th class="tbth" style="width:70px">KG</th>
-                        }
+                        <th class="tbth" style="width:70px">UOM</th>
+                        <th class="tbth" style="width:70px">Quantity</th>
+                       
                         if (Model.itemDetail.Contains("Bags:"))
                         {
                             <th class="tbth" style="width:70px">Bags</th>

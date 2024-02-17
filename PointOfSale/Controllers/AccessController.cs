@@ -42,16 +42,29 @@ namespace PointOfSale.Controllers
         {
             try
             {
-                User user_found = await _userService.GetByCredentials(model.Name, model.PassWord);
 
-                log.LogWriter("Login user_found: " + user_found + " UserDetail: " + model.Name + " ; kim" + Reverse(model.PassWord) + "carl" + user_found.IdUsers);
-                if (user_found == null)
+                User user_email = await _userService.GetByemail(model.Name);
+                if (user_email == null)
                 {
-                    ViewData["Message"] = "No matches found";
+                    log.LogWriter("Login user_email not found");
+                    ViewData["Message"] = "INVALID USER ID";
                     return View();
                 }
 
-                ViewData["Message"] = null;
+                User user_found = await _userService.GetByCredentials(model.Name, model.PassWord);
+
+                log.LogWriter("UserDetail: " + model.Name + " ; kim" + Reverse(model.PassWord) + "carl");
+                if (user_found == null)
+                {
+                    log.LogWriter("Login user_found not found");
+                    ViewData["Message"] = "INVALID PASSWORD";                    
+                    return View();
+                }
+                else
+                {
+                    log.LogWriter("Login user_found: " + user_found);
+                }
+
 
                 List<Claim> claims = new List<Claim>()
                 {

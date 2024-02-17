@@ -93,6 +93,10 @@
       "PackagePath": "staticwebassets\\js\\sleek.js"
     },
     {
+      "Id": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\wwwroot\\js\\views.zip",
+      "PackagePath": "staticwebassets\\js\\views.zip"
+    },
+    {
       "Id": "D:\\Umais\\MyWorking\\GatePass\\PointOfSale\\wwwroot\\js\\views\\AdminDashBoard.js",
       "PackagePath": "staticwebassets\\js\\views\\AdminDashBoard.js"
     },
